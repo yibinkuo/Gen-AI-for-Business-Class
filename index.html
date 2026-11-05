@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yibin Kuo</title>
+<meta name="description" content="Yibin Kuo — MBA candidate at Columbia Business School. Strategy, private capital, and financial advisory.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --columbia: #B9D9EB;
+    --columbia-soft: #E3F0F8;
+    --navy: #012169;
+    --blue: #1D4F91;
+    --bg: #F7FAFC;
+    --surface: #FFFFFF;
+    --ink: #1A2433;
+    --muted: #55637A;
+    --line: #DCE6EF;
+    --shadow: 0 1px 2px rgba(1,33,105,.06), 0 8px 24px rgba(1,33,105,.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --columbia: #6FA8CC;
+      --columbia-soft: #13263D;
+      --navy: #B9D9EB;
+      --blue: #8EC2E2;
+      --bg: #0B1422;
+      --surface: #111D2F;
+      --ink: #E6EEF6;
+      --muted: #9AABBF;
+      --line: #1F3048;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--blue); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  :focus-visible { outline: 3px solid var(--columbia); outline-offset: 2px; border-radius: 4px; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 20px; }
+
+  /* Nav */
+  header.nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 85%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 60px; gap: 16px; }
+  .brand { font-weight: 800; color: var(--navy); letter-spacing: -.01em; font-size: 18px; }
+  .brand:hover { text-decoration: none; }
+  .nav ul { list-style: none; display: flex; gap: 4px; margin: 0; padding: 0; }
+  .nav ul a {
+    display: block; padding: 6px 12px; border-radius: 999px;
+    color: var(--muted); font-weight: 500; font-size: 14px;
+  }
+  .nav ul a:hover { text-decoration: none; color: var(--navy); background: var(--columbia-soft); }
+  .nav ul a.active { color: var(--navy); background: var(--columbia-soft); }
+
+  /* Hero */
+  .hero { padding: 72px 0 40px; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--blue); background: var(--columbia-soft); padding: 4px 12px; border-radius: 999px;
+  }
+  .hero h1 { font-size: clamp(40px, 7vw, 64px); line-height: 1.05; margin: 18px 0 14px; color: var(--navy); letter-spacing: -.03em; }
+  .hero p.lede { font-size: 19px; color: var(--muted); max-width: 640px; margin: 0 0 24px; }
+  .links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 10px 16px; border-radius: 10px; font-weight: 600; font-size: 15px;
+    border: 1px solid var(--line); background: var(--surface); color: var(--navy);
+  }
+  .btn:hover { text-decoration: none; border-color: var(--columbia); }
+  .btn.primary { background: var(--navy); color: var(--bg); border-color: var(--navy); }
+  .btn svg { width: 18px; height: 18px; fill: currentColor; }
+
+  /* Tiles */
+  .tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 40px 0 8px; }
+  .tile {
+    display: block; padding: 20px; border-radius: 14px;
+    background: var(--surface); border: 1px solid var(--line); box-shadow: var(--shadow);
+    color: var(--ink); transition: transform .15s ease, border-color .15s ease;
+    border-top: 4px solid var(--columbia);
+  }
+  .tile:hover { text-decoration: none; transform: translateY(-2px); border-color: var(--columbia); }
+  .tile .k { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--blue); }
+  .tile .t { font-size: 18px; font-weight: 700; color: var(--navy); margin: 6px 0 4px; }
+  .tile .d { font-size: 14px; color: var(--muted); }
+
+  /* Sections */
+  section.block { padding: 48px 0 16px; }
+  h2 {
+    font-size: 14px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: var(--blue); margin: 0 0 20px; display: flex; align-items: center; gap: 12px;
+  }
+  h2::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    padding: 24px; margin-bottom: 16px; box-shadow: var(--shadow);
+  }
+  .card-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+  .card h3 { margin: 0; font-size: 20px; color: var(--navy); letter-spacing: -.01em; }
+  .role { font-weight: 600; margin: 2px 0 0; }
+  .role .when { font-weight: 400; color: var(--muted); }
+  .meta { text-align: right; font-size: 14px; color: var(--muted); white-space: nowrap; }
+  .meta .date {
+    display: inline-block; background: var(--columbia-soft); color: var(--navy);
+    font-weight: 600; padding: 2px 10px; border-radius: 999px; margin-top: 4px;
+  }
+  .sub { font-style: italic; color: var(--muted); margin: 14px 0 4px; }
+  .card ul { margin: 12px 0 0; padding-left: 20px; }
+  .card li { margin: 6px 0; }
+  .card li::marker { color: var(--columbia); }
+  .kv { margin: 12px 0 0; }
+  .kv p { margin: 4px 0; }
+  .kv .label { font-style: italic; color: var(--muted); }
+  .role-break { border-top: 1px dashed var(--line); margin-top: 18px; padding-top: 16px; }
+  strong { color: var(--navy); font-weight: 600; }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+  .chip { background: var(--columbia-soft); color: var(--navy); font-size: 14px; font-weight: 500; padding: 4px 12px; border-radius: 999px; }
+
+  footer { padding: 48px 0 64px; color: var(--muted); font-size: 14px; text-align: center; }
+  footer .links { justify-content: center; margin-bottom: 12px; }
+
+  @media (max-width: 720px) {
+    .tiles { grid-template-columns: 1fr; }
+    .nav ul a { padding: 6px 8px; font-size: 13px; }
+    .nav .brand { font-size: 16px; }
+    .hero { padding-top: 48px; }
+    .meta { text-align: left; white-space: normal; }
+    .card { padding: 18px; }
+  }
+  @media (max-width: 420px) {
+    .nav .wrap { padding: 0 16px; }
+    .nav ul li.hide-sm { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top">Yibin Kuo</a>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#additional">More</a></li>
+        <li class="hide-sm"><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <section class="hero">
+    <span class="eyebrow">MBA Candidate · Columbia Business School</span>
+    <h1>Hi, I'm Yibin.</h1>
+    <p class="lede">Strategy &amp; Management MBA at Columbia, with a background in private capital consulting at Oliver Wyman and financial accounting advisory at EY and PwC. I like turning messy numbers into clear decisions.</p>
+    <div class="links">
+      <a class="btn primary" href="mailto:YKuo27@gsb.columbia.edu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2Zm0 4-8 5-8-5V6l8 5 8-5v2Z"/></svg>
+        Email me
+      </a>
+      <a class="btn" href="https://www.linkedin.com/in/yibinkuo/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28ZM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13ZM7.12 20.45H3.56V9h3.56v11.45ZM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0Z"/></svg>
+        LinkedIn
+      </a>
+      <a class="btn" href="https://github.com/yibinkuo" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.23c-3.34.73-4.04-1.42-4.04-1.42-.55-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.09 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.5 1 .1-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.7.82.58A12 12 0 0 0 12 .3Z"/></svg>
+        GitHub
+      </a>
+    </div>
+
+    <div class="tiles">
+      <a class="tile" href="#education">
+        <div class="k">01 · Education</div>
+        <div class="t">Columbia MBA · UC Davis BS</div>
+        <div class="d">Columbia Fellows Merit Scholar; GRE 334 (99th pct.)</div>
+      </a>
+      <a class="tile" href="#experience">
+        <div class="k">02 · Experience</div>
+        <div class="t">Oliver Wyman · EY · PwC</div>
+        <div class="d">Private capital, carve-out IPOs, and audit</div>
+      </a>
+      <a class="tile" href="#additional">
+        <div class="k">03 · Additional</div>
+        <div class="t">Mentoring &amp; interests</div>
+        <div class="d">Minds Matter, bouldering, Guzheng, and travel</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="block" id="education">
+    <h2>Education</h2>
+
+    <article class="card">
+      <div class="card-head">
+        <div>
+          <h3>Columbia Business School</h3>
+          <p class="role">MBA, Strategy &amp; Management, May 2027</p>
+        </div>
+        <div class="meta">New York, NY<br><span class="date">2025 – 2027</span></div>
+      </div>
+      <div class="kv">
+        <p><span class="label">Honors:</span> Columbia Fellows Merit Scholar; GRE: 334 (99<sup>th</sup> percentile)</p>
+        <p><span class="label">Membership:</span> Management Consulting Association; Small Business Consulting Program; Private Equity Club; Hermes Society</p>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <div>
+          <h3>University of California, Davis</h3>
+          <p class="role">BS, Managerial Economics, Minor in Accounting, June 2020</p>
+        </div>
+        <div class="meta">Davis, CA<br><span class="date">2016 – 2020</span></div>
+      </div>
+      <div class="kv">
+        <p><span class="label">Honors:</span> Graduated with Honors; Managerial Economics Departmental Citation (top 10% of graduating class); Dean's List</p>
+        <p><span class="label">Leadership:</span> Davis Accounting Society Treasurer; Academic Assistance &amp; Tutoring Center Writing Tutor</p>
+      </div>
+    </article>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="block" id="experience">
+    <h2>Experience</h2>
+
+    <article class="card">
+      <div class="card-head">
+        <div>
+          <h3>Oliver Wyman, LLC</h3>
+          <p class="role">Associate – Private Capital</p>
+        </div>
+        <div class="meta">New York, NY<br><span class="date">2026 – 2026</span></div>
+      </div>
+      <ul>
+        <li>Developed 5-year growth model with key drivers and sensitivity analysis on sell-side commercial due diligence for car dealership software and data provider by conducting secondary research and <strong>40+ expert interviews</strong> to assess market size across 5 products</li>
+        <li>Modeled and quantified <strong>$684M of net cross-sell opportunity</strong> on a HVAC/R synergy assessment for a merger by identifying capture rates, spend ratios by end market, and vendor retention risks through 20+ competitor and customer interviews</li>
+        <li>Synthesized bottom-up proofing for <strong>14 AI use cases</strong>, AI vendor risk governance, AI digital marketing vendor research and selection, interview guide for the CIO and tech team, and AI strategy roadmap for a <strong>$35B AUM</strong> registered investment advisor</li>
+      </ul>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <div>
+          <h3>Ernst &amp; Young LLP</h3>
+          <p class="role">Senior Consultant – Financial Accounting Advisory Services <span class="when">(2022 – 2025)</span></p>
+        </div>
+        <div class="meta">New York, NY<br><span class="date">2021 – 2025</span></div>
+      </div>
+      <p class="sub">Fortune 100 Insurance Client – $13.5B Carve-out IPO Transaction</p>
+      <ul>
+        <li>Counseled client leadership on investment significance testing, leading 10+ expert interviews with technical accounting specialists and directing Excel-based analysis and remediation of testing to avoid <strong>$5M+ in potential audit and compliance costs</strong></li>
+        <li>Drove execution of financial reporting for <strong>$2.2B private equity sales transaction</strong> while leading a cross-continental team of 5, creating and presenting cash flow analysis and financial carve-out roadmap to client leadership for post-transaction integration</li>
+        <li>Designed and implemented Power Query automation for carve-out financial reporting to eliminate workflow inefficiencies while incorporating iterative feedback and backtesting to refine the tool, earning client buy-in and saving <strong>600+ client hours per quarter</strong></li>
+        <li>Spearheaded PMO for Investments workstream of 30+ professionals, reducing deliverable preparation time by <strong>33%</strong> with EY-Parthenon by analyzing pain points through focus groups and surveys and aligning best practices with stakeholder workshops</li>
+        <li>Led cost takeout in a team of 4, streamlining monthly financial reconciliations for 36 entities by implementing project management tools and addressing bottlenecks using process mapping and cycle time analysis to cut manual workload by <strong>50%</strong></li>
+        <li>Partnered with client's Director of FP&amp;A to train 3 new employees in enhancing forecast accuracy through standardized models and stakeholder alignment via structured communication channels, accelerating ramp-up with re-designed onboarding process</li>
+      </ul>
+
+      <div class="role-break">
+        <p class="role">Staff Consultant – Financial Accounting Advisory Services <span class="when">(2021 – 2022)</span></p>
+        <ul>
+          <li>Optimized finance and accounting operations for a <strong>$7B cryptocurrency company</strong> by standardizing $25M in revenue recognition, accelerating NFT platform's monthly financial close, and streamlining staff onboarding to strengthen IPO readiness</li>
+          <li>Rated as <strong>top 15% performer</strong>, with early promotion to Senior Consultant 6 months ahead of standard promotion timeline</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <div>
+          <h3>PricewaterhouseCoopers LLP</h3>
+          <p class="role">Core Assurance Associate</p>
+        </div>
+        <div class="meta">San Jose, CA<br><span class="date">2020 – 2021</span></div>
+      </div>
+      <ul>
+        <li>Executed year-end audit procedures for leading hospitality company's <strong>$50B IPO</strong>, auditing <strong>$3.7B in revenue within 4 weeks</strong>; enhanced audit testing efficiency by 33% by utilizing Alteryx workflows and coaching 3 offshore team members</li>
+      </ul>
+    </article>
+  </section>
+
+  <!-- ADDITIONAL -->
+  <section class="block" id="additional">
+    <h2>Additional Information</h2>
+    <article class="card">
+      <div class="kv">
+        <p><span class="label">Volunteer:</span> Youth Mentor and Volunteer Interview Committee at Minds Matter (secured <strong>$600K+ in scholarships</strong> for 4 mentees)</p>
+        <p style="margin-top:14px"><span class="label">Interests:</span></p>
+        <div class="chips">
+          <span class="chip">Weightlifting</span>
+          <span class="chip">Bouldering (6 countries)</span>
+          <span class="chip">Global travel (22 countries)</span>
+          <span class="chip">Personal finance</span>
+          <span class="chip">Guzheng (Chinese zither)</span>
+        </div>
+      </div>
+    </article>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="links">
+      <a class="btn primary" href="mailto:YKuo27@gsb.columbia.edu">YKuo27@gsb.columbia.edu</a>
+      <a class="btn" href="https://www.linkedin.com/in/yibinkuo/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/yibinkuo" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <p>© 2026 Yibin Kuo · New York, NY</p>
+  </div>
+</footer>
+
+<script>
+  // Highlight the nav link for the section currently in view
+  (function () {
+    var links = document.querySelectorAll('.nav ul a');
+    var map = {};
+    links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+    if (!('IntersectionObserver' in window)) return;
+    var obs = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting && map[e.target.id]) {
+          links.forEach(function (a) { a.classList.remove('active'); });
+          map[e.target.id].classList.add('active');
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    ['education', 'experience', 'additional', 'contact'].forEach(function (id) {
+      var el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+  })();
+</script>
+</body>
+</html>
